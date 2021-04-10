@@ -23,7 +23,7 @@ export class VerPaisComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+ 
     this.activatedRoute.params
       .pipe(
         switchMap( ( param ) => this.PaisService.getPaisPorAlpha( param.id ) ), 

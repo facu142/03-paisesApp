@@ -18,21 +18,30 @@ import { PaisService } from '../../services/pais.service';
 export class PorRegionComponent  {
 
   regiones : string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
-  //paises : Country[] = ''
+  paises   : Country[] = [];
 
   regionActiva : string = '';
 
 
   constructor ( private paisService : PaisService ) { }
 
-  getClaseCss ( region : string ) :string {
-    return region == this.regionActiva ? 'btn-primary' : 'btn-outline-primary' 
+  getClaseCSS ( region : string ) :string {
+    return region == this.regionActiva 
+              ? 'btn-primary' 
+              : 'btn-outline-primary';
   }
 
   activarRegion ( region : string ){
-    this.regionActiva = region
+    
+    if(region === this.regionActiva) { return; }
 
-    //TODO Hacer llamado al servicio
+    this.regionActiva = region; 
+    this.paises = [];
+    this.paisService.buscarRegion(region)
+    .subscribe(paises =>{
+      this.paises = paises;
+    }) 
+    
   }
 
 
