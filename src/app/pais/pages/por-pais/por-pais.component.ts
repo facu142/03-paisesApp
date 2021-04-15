@@ -10,10 +10,7 @@ import { Country } from '../../interfaces/pais.interface';
     `
       li{
         cursor: pointer;
-      }
-  
-  
-  
+      }  
     `
   ]
 })
