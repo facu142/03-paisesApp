@@ -9,16 +9,13 @@ import { tap } from 'rxjs/operators';
 })
 export class PaisService {
 
-  private apiUrl: string = 'https://restcountries.eu/rest/v2'
+  private apiUrl:string= 'https://restcountries.com/v2';
 
   get htppParams () {
-    return  new HttpParams().set('fields', 'name;capital;alpha2Code;flag;population');
+    return  new HttpParams().set('fields', 'name,capital,alpha2Code,flag,population');
   }
 
   constructor(private http: HttpClient) { }
-
-
-
 
   buscarPais(termino: string): Observable<Country[]> {
     const url = `${this.apiUrl}/name/${termino}`
